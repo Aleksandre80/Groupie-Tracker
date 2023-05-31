@@ -1,0 +1,23 @@
+body {
+  background: white;
+}
+.group-info-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-slide:hover .group-info-container {
+  opacity: 0.9;
+}
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <!-- Link Tailwind JS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Link DaisyUI CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
+  <!-- Link CSS stylesheet -->
+  <script src="static/script.js"></script>
+  <script src="static/groupInfo.js"></script>
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+
+<body>
+  <div class="navbar bg-base-100">
+    <div class="navbar-start"></div>
+    <div class="navbar-center">
+      <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+        Groupie Tracker
+      </h1>
+    </div>
+    <div class="navbar-end">
+      <div class="form-control">
+        <input type="text" placeholder="Search" class="input input-bordered" id="searchInput" />
+      </div>
+      <ul id="suggestionList"></ul>
+    </div>
+  </div>
+
+  <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      {{range .}}
+      <div class="swiper-slide" data-artist-name="{{.Name}}" data-artist-members="{{range .Members}}{{.}},{{end}}" data-artist-creation-date="{{.CreationDate}}" data-artist-first-album="{{.FirstTimeAlbum}}">
+        <img src="{{.Image}}" />
+      </div>
+      <div class="group-info-container">
+        <h2 class="group-name"></h2>
+        <p class="group-members"></p>
+        <p class="group-creation-date"></p>
+        <p class="group-first-album"></p>
+      </div>
+      {{end}}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  <button class="btn">Hello daisyUI</button>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      mousewheel: true,
+      keyboard: true,
+    });
+  </script>
+</body>
+
+</html>
